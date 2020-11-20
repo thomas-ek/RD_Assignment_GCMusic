@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+    local_mysql:
+        image: 'mysql:8.0.17'
+        container_name: 'mysql_container'
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: RD_ThomasEK 
+            MYSQL_DATABASE: gc_music
+        volumes:
+            - "./init:/docker-entrypoint-initdb.d/"
+
+    admin:
+        image: adminer
+        ports: 
+            - "8080:8080"
+        
